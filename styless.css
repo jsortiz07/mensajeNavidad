@@ -1,0 +1,122 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    overflow: hidden;
+}
+
+.snowfall {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-image: url('img/copos.png'); /* Añade una imagen de copos de nieve */
+    animation: snowfall 10s linear infinite;
+    z-index: -1;
+}
+
+@keyframes snowfall {
+    from {
+        transform: translateY(-100vh);
+    }
+    to {
+        transform: translateY(100vh);
+    }
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background-color: #e44d26; /* Color de fondo de la solapa */
+    transform-origin: top;
+    transition: transform 1s ease-in-out;
+}
+
+.top-flap {
+    transform: rotateX(0deg);
+}
+
+.bottom-flap {
+    bottom: 0;
+    transform: rotateX(0deg);
+}
+
+#letterContainer.open .top-flap {
+    transform: rotateX(-90deg);
+}
+
+#letterContainer.open .bottom-flap {
+    transform: rotateX(90deg);
+}
+
+.letter-content {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+h1 {
+    color: #e44d26;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+button {
+    background-color: #e44d26;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #bf3b1d;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Marco de luces de Navidad */
+.container::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border-radius: 15px;
+    z-index: -1;
+    animation: lights 6s linear infinite;
+}
+
+@keyframes lights {
+    0%, 25% {
+        box-shadow: 0 0 60px #ff0000;
+    }
+    25%, 50% {
+        box-shadow: 0 0 60px #00ff00;
+    }
+    50%, 75% {
+        box-shadow: 0 0 60px #0000ff;
+    }
+    75%, 100% {
+        box-shadow: 0 0 60px #ff0000;
+    }
+}
